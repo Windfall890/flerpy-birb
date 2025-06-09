@@ -6,6 +6,9 @@ const NEUTRAL_ANGLE_RANGE : float= 10
 
 @export var gravity : float = 100
 @export var jumpPower : float = 100
+@export var jumpCD : float = 0.07
+@export var maxSpeed : float = 100
+@export var player : bool = true
 
 var lookUp = Vector2(1,-1)
 var lookDown = Vector2(1,1)
@@ -36,8 +39,7 @@ func _physics_process(delta):
 	if velocity.y > 0 && !%Sprite.is_playing():
 		%Sprite.play("default")
 		
-	if Input.is_action_pressed("Jump"):
-		%Sprite.play("flerp")
+	if Input.is_action_just_pressed("Jump") && player:
 		do_jump()
 	
 	for i in get_slide_collision_count():
@@ -45,14 +47,31 @@ func _physics_process(delta):
 		print("I collided with ", collision.get_collider().name)
 		
 	if collided:
+		AudioEvents.Hit.emit()
 		die()
 
 func die() -> void:
 	print("DEAD")
 	velocity.y = 0 
-	%Sprite.stop()
+	%Sprite.play("xdead")
 	dead = true
 	Events.GameEnd.emit()
+	
+	await %Sprite.animation_finished
+	AudioEvents.Die.emit()
 
 func do_jump():
-	velocity.y = -jumpPower 
+	if %JumpTimer.is_stopped() :
+		if velocity.y > 0:
+			velocity.y = 0
+		if velocity.y > -maxSpeed :
+			velocity.y = velocity.y - jumpPower 
+		%Sprite.play("flerp")
+		AudioEvents.Flap.emit()
+		%JumpTimer.start(jumpCD)
+		
+func disableCollider() -> void :
+	$CollisionShape2D.disabled = true
+	
+	
+	

@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://ba5pm4sp4veyj"]
+
+[ext_resource type="Script" path="res://Scenes/AudioHandler.gd" id="1_0qp21"]
+[ext_resource type="AudioStream" uid="uid://c0i6pr2clharo" path="res://Assets/audio/die.ogg" id="2_n5aem"]
+[ext_resource type="AudioStream" uid="uid://3k5aua0dhemc" path="res://Assets/audio/hit.ogg" id="3_pqfa6"]
+[ext_resource type="AudioStream" uid="uid://boec6agjuk62d" path="res://Assets/audio/wing.ogg" id="4_oba8h"]
+[ext_resource type="AudioStream" uid="uid://cjwt5nsqnmqfo" path="res://Assets/audio/point.ogg" id="5_tm3m7"]
+[ext_resource type="AudioStream" uid="uid://c6d0l4trrjkcs" path="res://Assets/audio/swoosh.ogg" id="6_4hdtd"]
+[ext_resource type="AudioStream" uid="uid://dcagw8c22wdmf" path="res://Assets/audio/BC_flyin.wav" id="7_sej52"]
+
+[node name="AudioHandler" type="Node2D"]
+script = ExtResource("1_0qp21")
+
+[node name="DieSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_n5aem")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_pqfa6")
+volume_db = -3.0
+
+[node name="FlapSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_oba8h")
+volume_db = -3.0
+max_polyphony = 3
+
+[node name="PointSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_tm3m7")
+volume_db = -5.0
+
+[node name="WhooshSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_4hdtd")
+volume_db = -2.0
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_sej52")
+volume_db = -6.0
+autoplay = true

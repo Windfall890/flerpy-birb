@@ -11,13 +11,16 @@ config_version=5
 [application]
 
 config/name="Flerpy Birb"
-run/main_scene="res://Scenes/game.tscn"
+run/main_scene="res://Scenes/Title.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Events="*res://Scripts/Events.gd"
+AudioEvents="*res://Scripts/audio_events.gd"
+SaveData="*res://save_manager.gd"
+SoundManager="*res://Scenes/audio_handler.tscn"
 
 [display]
 

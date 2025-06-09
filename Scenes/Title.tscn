@@ -1,0 +1,156 @@
+[gd_scene load_steps=14 format=3 uid="uid://72nkewu6uh0d"]
+
+[ext_resource type="Texture2D" uid="uid://bift0fmhv36fi" path="res://Assets/sprites/background-day.png" id="1_o4usi"]
+[ext_resource type="Script" path="res://Scripts/Scroller.gd" id="2_t3ncu"]
+[ext_resource type="Script" path="res://Scenes/pipe_spawner.gd" id="3_ixacf"]
+[ext_resource type="PackedScene" uid="uid://x51g8r06fw0w" path="res://Scenes/pipes.tscn" id="4_6b0wk"]
+[ext_resource type="Script" path="res://Scenes/floor.gd" id="5_ltefu"]
+[ext_resource type="Texture2D" uid="uid://c5ol6nc6au5sh" path="res://Assets/sprites/base.png" id="6_28s3p"]
+[ext_resource type="Script" path="res://auto_birb.gd" id="7_milyv"]
+[ext_resource type="PackedScene" uid="uid://ceuonmexbch47" path="res://Scenes/birb.tscn" id="8_vqhrb"]
+[ext_resource type="Script" path="res://Scenes/Title_UI.gd" id="9_1p3vx"]
+[ext_resource type="PackedScene" uid="uid://bphj1pwkg0xb2" path="res://mute_button.tscn" id="9_orx64"]
+[ext_resource type="Texture2D" uid="uid://blfqw1gky7p33" path="res://Assets/sprites/messages.tres" id="10_y21a8"]
+[ext_resource type="Texture2D" uid="uid://bmtooae6uti88" path="res://Assets/sprites/FlerpyTitle.png" id="11_nvp7r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvgvc"]
+size = Vector2(600, 110)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+unique_name_in_owner = true
+offset_right = 575.0
+offset_bottom = 512.0
+texture = ExtResource("1_o4usi")
+stretch_mode = 1
+script = ExtResource("2_t3ncu")
+direction = Vector2(1, 0)
+speed = 0.25
+
+[node name="PipeSpawner" type="Node2D" parent="."]
+position = Vector2(0, 250)
+script = ExtResource("3_ixacf")
+gap = 300
+gapDecrease = 0
+PipeScene = ExtResource("4_6b0wk")
+
+[node name="Timer" type="Timer" parent="PipeSpawner"]
+unique_name_in_owner = true
+wait_time = 5.0
+
+[node name="Floor" type="Node2D" parent="."]
+position = Vector2(288, 513)
+script = ExtResource("5_ltefu")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
+shape = SubResource("RectangleShape2D_lvgvc")
+debug_color = Color(0, 0.6, 0.701961, 0.831373)
+
+[node name="TextureRect" type="TextureRect" parent="Floor"]
+offset_left = -327.0
+offset_top = -58.0
+offset_right = 344.0
+offset_bottom = 54.0
+texture = ExtResource("6_28s3p")
+stretch_mode = 1
+script = ExtResource("2_t3ncu")
+direction = Vector2(1, 0)
+speed = 0.25
+
+[node name="AutoBirb" type="Node2D" parent="."]
+script = ExtResource("7_milyv")
+
+[node name="Birb" parent="AutoBirb" instance=ExtResource("8_vqhrb")]
+top_level = true
+position = Vector2(256, 227)
+gravity = 200.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("9_1p3vx")
+
+[node name="MuteButton" parent="CanvasLayer" instance=ExtResource("9_orx64")]
+button_pressed = false
+
+[node name="GetReady" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 16.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.382151, 0.188531, 0.832876, 0.8)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GetReady"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -28.0
+offset_right = 92.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_y21a8")
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="CanvasLayer/GetReady"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = 15.0
+offset_right = 100.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Flerp!!!"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -160.0
+offset_right = 128.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_nvp7r")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="ScoreLabel" type="RichTextLabel" parent="CanvasLayer"]
+modulate = Color(0.505882, 0, 1, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = -83.0
+offset_right = 59.5
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "High Score: 000"
+fit_content = true
+autowrap_mode = 0
+
+[connection signal="pressed" from="CanvasLayer/GetReady/Button" to="CanvasLayer" method="_on_button_pressed"]

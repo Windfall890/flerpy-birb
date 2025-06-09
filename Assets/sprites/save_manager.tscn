@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk63sh65ylq4a"]
+
+[ext_resource type="Script" path="res://save_manager.gd" id="1_4s3vu"]
+
+[node name="SaveManager" type="Node"]
+script = ExtResource("1_4s3vu")

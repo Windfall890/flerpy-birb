@@ -3,7 +3,7 @@ extends Node
 signal GameStart()
 signal GameEnd()
 signal PointScored()
-signal IncreaseDifficulty()
+signal IncreaseDifficulty(d:int)
 
 #UI
 signal Tick(accumulator: float)
