@@ -37,6 +37,7 @@ func point():
 
 func startBGM():
 	%BGM.pitch_scale = 1
+	%BGM.finished.connect(func() : $BGM.play())
 	%BGM.play()
 
 func stopBGM():
@@ -45,6 +46,7 @@ func stopBGM():
 func slowBGM():
 	#a musical third down
 	%BGM.pitch_scale = (1-0.3348)
+	%BGM.finished.connect(func() : $"%BGM".stop())
 
 func initVolume():
 	var value = SaveData.get_setting("volume")

@@ -16,6 +16,7 @@ func _ready():
 	
 	Events.PointScored.connect(countScore)
 	Events.GameEnd.connect(gameOver)
+	Events.GameStart.emit()
 
 func clockTick():
 	accumulator += %GameTime.wait_time
