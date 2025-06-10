@@ -15,7 +15,6 @@ func _ready():
 	
 func calcJitter():
 	jitter = randf_range(-10,10)
-	_draw()
 
 func _physics_process(delta):
 	if birb.position.y + jitter > (get_viewport_rect().get_center().y - centerOffset) :

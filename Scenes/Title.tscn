@@ -31,6 +31,8 @@ speed = 0.25
 [node name="PipeSpawner" type="Node2D" parent="."]
 position = Vector2(0, 250)
 script = ExtResource("3_ixacf")
+spawnTimer = 3.0
+spawnDecrease = 0.2
 gap = 300
 gapDecrease = 0
 PipeScene = ExtResource("4_6b0wk")

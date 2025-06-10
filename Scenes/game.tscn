@@ -39,6 +39,8 @@ speed = 0.25
 [node name="PipeSpawner" type="Node2D" parent="."]
 position = Vector2(0, 250)
 script = ExtResource("6_igtkx")
+spawnTimer = 3.0
+spawnDecrease = 0.2
 gap = 250
 gapDecrease = 15
 PipeScene = ExtResource("6_dwb6j")
@@ -71,7 +73,7 @@ speed = 0.25
 
 [node name="Birb" parent="." instance=ExtResource("2_ocm34")]
 top_level = true
-position = Vector2(256, 227)
+position = Vector2(256, 80)
 gravity = 300.0
 jumpCD = 0.01
 
