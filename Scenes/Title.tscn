@@ -86,9 +86,12 @@ offset_top = 16.0
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 color = Color(0.382151, 0.188531, 0.832876, 0.8)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/GetReady"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -105,6 +108,7 @@ texture = ExtResource("10_y21a8")
 stretch_mode = 4
 
 [node name="Button" type="Button" parent="CanvasLayer/GetReady"]
+modulate = Color(1, 0.683333, 0, 1)
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 1
 anchors_preset = 7
@@ -113,28 +117,28 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -100.0
-offset_top = 15.0
+offset_top = -58.0
 offset_right = 100.0
-offset_bottom = 46.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 25
 text = "Flerp!!!"
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -160.0
-offset_right = 128.0
-offset_bottom = 40.0
+offset_left = -250.0
+offset_top = -208.0
+offset_right = 250.0
+offset_bottom = -108.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_nvp7r")
-expand_mode = 2
-stretch_mode = 4
+expand_mode = 3
 
 [node name="ScoreLabel" type="RichTextLabel" parent="CanvasLayer"]
 modulate = Color(0.505882, 0, 1, 1)
