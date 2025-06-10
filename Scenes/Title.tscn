@@ -65,6 +65,7 @@ speed = 0.25
 script = ExtResource("7_milyv")
 
 [node name="Birb" parent="AutoBirb" instance=ExtResource("8_vqhrb")]
+unique_name_in_owner = true
 top_level = true
 position = Vector2(256, 227)
 gravity = 200.0

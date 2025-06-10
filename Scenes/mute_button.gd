@@ -1,4 +1,5 @@
 extends CheckBox
+class_name MuteButton
 
 @onready var sound_on = $SoundOn
 @onready var sound_off = $SoundOff
@@ -23,4 +24,3 @@ func setIcon(muted) :
 		sound_off.visible = false
 		
 	AudioServer.set_bus_mute(0,muted)	
-		
