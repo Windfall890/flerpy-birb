@@ -13,7 +13,7 @@ func updateClock(accum:float) -> void :
 	%Clock.text = "TIME %.2f" % accum
 	
 func updateScore(score:int) -> void :
-	%Score.text = "SCORE %03d" % score
+	%Score.text = "%03d" % score
 
 func gameOver() :
 	await get_tree().process_frame

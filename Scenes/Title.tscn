@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://Scenes/Title_UI.gd" id="9_1p3vx"]
 [ext_resource type="PackedScene" uid="uid://bphj1pwkg0xb2" path="res://mute_button.tscn" id="9_orx64"]
 [ext_resource type="Texture2D" uid="uid://blfqw1gky7p33" path="res://Assets/sprites/messages.tres" id="10_y21a8"]
-[ext_resource type="Texture2D" uid="uid://bmtooae6uti88" path="res://Assets/sprites/FlerpyTitle.png" id="11_nvp7r"]
+[ext_resource type="Texture2D" uid="uid://m0juie4im6jy" path="res://Assets/sprites/FlerpyTitle_bordered_1px.png" id="12_sp7h4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvgvc"]
 size = Vector2(600, 110)
@@ -20,7 +20,7 @@ size = Vector2(600, 110)
 
 [node name="Background" type="TextureRect" parent="."]
 unique_name_in_owner = true
-offset_right = 575.0
+offset_right = 576.0
 offset_bottom = 512.0
 texture = ExtResource("1_o4usi")
 stretch_mode = 1
@@ -111,7 +111,6 @@ texture = ExtResource("10_y21a8")
 stretch_mode = 4
 
 [node name="Button" type="Button" parent="CanvasLayer/GetReady"]
-modulate = Color(1, 0.683333, 0, 1)
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 1
 anchors_preset = 7
@@ -125,10 +124,12 @@ offset_right = 100.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(0.996078, 0.839216, 0.0666667, 1)
 theme_override_font_sizes/font_size = 25
 text = "Flerp!!!"
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+[node name="Title" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -140,11 +141,10 @@ offset_right = 250.0
 offset_bottom = -108.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("11_nvp7r")
+texture = ExtResource("12_sp7h4")
 expand_mode = 3
 
 [node name="ScoreLabel" type="RichTextLabel" parent="CanvasLayer"]
-modulate = Color(0.505882, 0, 1, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -156,6 +156,9 @@ offset_right = 59.5
 offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/default_color = Color(0.505882, 0, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 28
 text = "High Score: 000"
 fit_content = true
 autowrap_mode = 0

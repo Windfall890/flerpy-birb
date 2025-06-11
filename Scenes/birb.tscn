@@ -64,6 +64,7 @@ animations = [{
 collision_mask = 2
 floor_stop_on_slope = false
 script = ExtResource("1_rlf13")
+jumpPower = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_6wd4y")

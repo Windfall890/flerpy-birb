@@ -2,9 +2,10 @@ shader_type canvas_item;
 
 uniform vec2 direction;
 uniform float speed;
+uniform float time;
 
 void fragment() {
-	vec2 move = direction * TIME * speed;
+	vec2 move = direction * time * speed;
 	COLOR = texture(TEXTURE, UV+move);
 }
 

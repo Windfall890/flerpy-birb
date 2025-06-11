@@ -28,8 +28,7 @@ wait_time = 20.0
 
 [node name="Background" type="TextureRect" parent="."]
 unique_name_in_owner = true
-offset_left = 1.0
-offset_right = 577.0
+offset_right = 576.0
 offset_bottom = 512.0
 texture = ExtResource("1_hvsoe")
 stretch_mode = 1
@@ -41,9 +40,7 @@ speed = 0.25
 position = Vector2(0, 250)
 script = ExtResource("6_igtkx")
 spawnTimer = 3.0
-spawnDecrease = 0.2
 gap = 250
-gapDecrease = 15
 PipeScene = ExtResource("6_dwb6j")
 
 [node name="Timer" type="Timer" parent="PipeSpawner"]
@@ -75,7 +72,7 @@ speed = 0.25
 [node name="Birb" parent="." instance=ExtResource("2_ocm34")]
 top_level = true
 position = Vector2(256, 80)
-gravity = 300.0
+gravity = 400.0
 jumpCD = 0.01
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -83,6 +80,7 @@ script = ExtResource("8_qytiv")
 
 [node name="Clock" type="Label" parent="UI"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -91,15 +89,26 @@ offset_top = 10.0
 offset_right = 20.0
 offset_bottom = 33.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0.996078, 0.839216, 0.0666667, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 text = "00:00"
 
 [node name="Score" type="Label" parent="UI"]
 unique_name_in_owner = true
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 97.0
-offset_bottom = 33.0
-text = "SCORE: 000"
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.5
+offset_right = 43.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.996078, 0.839216, 0.0666667, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "000"
+horizontal_alignment = 1
 
 [node name="GameOver" type="ColorRect" parent="UI"]
 unique_name_in_owner = true
@@ -115,6 +124,7 @@ grow_vertical = 2
 color = Color(0.382151, 0.188531, 0.832876, 0.8)
 
 [node name="TextureRect" type="TextureRect" parent="UI/GameOver"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -143,6 +153,7 @@ offset_right = 100.0
 offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(0.996078, 0.839216, 0.0666667, 1)
 text = "Restart"
 
 [node name="MainMenu" type="Button" parent="UI/GameOver"]
@@ -159,10 +170,10 @@ offset_right = 100.0
 offset_bottom = 92.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(0.996078, 0.839216, 0.0666667, 1)
 text = "Back To Menu"
 
 [node name="ScoreLabel" type="RichTextLabel" parent="UI/GameOver"]
-modulate = Color(0.505882, 0, 1, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -175,6 +186,10 @@ offset_right = 59.5
 offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.00126, 1)
+theme_override_colors/default_color = Color(0.505882, 0, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 28
 text = "High Score: 000"
 fit_content = true
 autowrap_mode = 0

@@ -7,6 +7,8 @@ class_name Scroller
 
 const SCROLL = preload("res://shaders/Scroll.gdshader")
 
+var time: float = 0
+
 func _ready():
 	if material == null:
 		material = ShaderMaterial.new()
@@ -17,6 +19,12 @@ func _ready():
 		
 	Events.GameStart.connect(func(): setScroll(direction, speed))
 	Events.GameEnd.connect(func(): setScroll(direction, 0))
+	Events.IncreaseDifficulty.connect(func(d): setDifficultySpeed(d))
+
+func _process(delta):
+	material.set_shader_parameter("time", time)
+	time+=delta
+	
 
 func setDifficultySpeed(d:int):
 	setSpeed(speed + 0.1*d)

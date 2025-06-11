@@ -68,6 +68,7 @@ func do_jump():
 			velocity.y = velocity.y - jumpPower 
 		%Sprite.play("flerp")
 		AudioEvents.Flap.emit()
+		#print("JUMP: %f" % velocity.y)
 		%JumpTimer.start(jumpCD)
 		
 func disableCollider() -> void :

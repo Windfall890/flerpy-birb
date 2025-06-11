@@ -13,7 +13,7 @@ func _ready():
 	global_position.y = get_viewport_rect().size.y / 2.0 + jitter                  
 	%Top.position.y -= gap/2
 	%Bottom.position.y +=gap/2
-	print("PIPE - X=%d, jitter=%d, gap=%d, speed=%d" % [global_position.x, jitter, gap, speed])
+	#print("PIPE - X=%d, jitter=%d, gap=%d, speed=%d" % [global_position.x, jitter, gap, speed])
 	Events.GameEnd.connect(stop)
 
 func stop():
