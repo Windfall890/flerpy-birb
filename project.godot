@@ -28,6 +28,12 @@ window/size/viewport_width=576
 window/size/viewport_height=512
 window/stretch/mode="canvas_items"
 
+[importer_defaults]
+
+font_data_dynamic={
+"antialiasing": 0
+}
+
 [input]
 
 Jump={
