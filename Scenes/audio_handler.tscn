@@ -14,30 +14,32 @@ script = ExtResource("1_0qp21")
 [node name="DieSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("2_n5aem")
+bus = &"SFX"
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_pqfa6")
-volume_db = -3.0
+bus = &"SFX"
 
 [node name="FlapSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("4_oba8h")
-volume_db = -3.0
 max_polyphony = 3
+bus = &"SFX"
 
 [node name="PointSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("5_tm3m7")
-volume_db = -5.0
+bus = &"SFX"
 
 [node name="WhooshSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("6_4hdtd")
-volume_db = -2.0
+bus = &"SFX"
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("7_sej52")
-volume_db = -6.0
+volume_db = -3.0
 autoplay = true
+bus = &"Music"

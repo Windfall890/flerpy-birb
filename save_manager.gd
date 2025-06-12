@@ -26,5 +26,5 @@ func save():
 func set_setting(setting,value):
 	config.set_value("settings", setting, value)
 	
-func get_setting(setting):
-	return config.get_value("settings", setting)
+func get_setting(setting, default = null):
+	return config.get_value("settings", setting, default)

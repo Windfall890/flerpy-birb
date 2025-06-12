@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://72nkewu6uh0d"]
+[gd_scene load_steps=21 format=3 uid="uid://72nkewu6uh0d"]
 
 [ext_resource type="Texture2D" uid="uid://bift0fmhv36fi" path="res://Assets/sprites/background-day.png" id="1_o4usi"]
 [ext_resource type="Script" path="res://Scripts/Scroller.gd" id="2_t3ncu"]
@@ -12,6 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://bphj1pwkg0xb2" path="res://mute_button.tscn" id="9_orx64"]
 [ext_resource type="Texture2D" uid="uid://blfqw1gky7p33" path="res://Assets/sprites/messages.tres" id="10_y21a8"]
 [ext_resource type="Texture2D" uid="uid://m0juie4im6jy" path="res://Assets/sprites/FlerpyTitle_bordered_1px.png" id="12_sp7h4"]
+[ext_resource type="Texture2D" uid="uid://d24seayjkc1wv" path="res://Assets/sprites/redbird-upflap.png" id="13_27v84"]
+[ext_resource type="Script" path="res://Scenes/sliders.gd" id="13_836fw"]
+[ext_resource type="Texture2D" uid="uid://dn1mkmxlbcr27" path="res://Assets/sprites/yellowbird-downflap.png" id="14_0bimn"]
+[ext_resource type="Texture2D" uid="uid://b08qjqgbrv354" path="res://Assets/sprites/redbird-downflap.png" id="14_2yn5o"]
+[ext_resource type="Texture2D" uid="uid://kidapwvjcm1k" path="res://Assets/sprites/yellowbird-upflap.png" id="14_j8io1"]
+[ext_resource type="Texture2D" uid="uid://cey5wuvtkpk54" path="res://Assets/sprites/redbird-midflap.png" id="15_ujq38"]
+[ext_resource type="Texture2D" uid="uid://3r5c886nplnw" path="res://Assets/sprites/yellowbird-midflap.png" id="16_wwtpy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvgvc"]
 size = Vector2(600, 110)
@@ -72,13 +79,13 @@ top_level = true
 position = Vector2(256, 227)
 gravity = 200.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("9_1p3vx")
 
-[node name="MuteButton" parent="CanvasLayer" instance=ExtResource("9_orx64")]
+[node name="MuteButton" parent="UI" instance=ExtResource("9_orx64")]
 button_pressed = false
 
-[node name="GetReady" type="ColorRect" parent="CanvasLayer"]
+[node name="GetReady" type="ColorRect" parent="UI"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 75)
 anchors_preset = 14
@@ -93,7 +100,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.382151, 0.188531, 0.832876, 0.8)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GetReady"]
+[node name="TextureRect" type="TextureRect" parent="UI/GetReady"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -110,7 +117,7 @@ grow_vertical = 2
 texture = ExtResource("10_y21a8")
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="CanvasLayer/GetReady"]
+[node name="Button" type="Button" parent="UI/GetReady"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 1
 anchors_preset = 7
@@ -128,7 +135,7 @@ theme_override_colors/font_color = Color(0.996078, 0.839216, 0.0666667, 1)
 theme_override_font_sizes/font_size = 25
 text = "Flerp!!!"
 
-[node name="Title" type="TextureRect" parent="CanvasLayer"]
+[node name="Title" type="TextureRect" parent="UI"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -144,7 +151,7 @@ grow_vertical = 2
 texture = ExtResource("12_sp7h4")
 expand_mode = 3
 
-[node name="ScoreLabel" type="RichTextLabel" parent="CanvasLayer"]
+[node name="ScoreLabel" type="RichTextLabel" parent="UI"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -163,4 +170,70 @@ text = "High Score: 000"
 fit_content = true
 autowrap_mode = 0
 
-[connection signal="pressed" from="CanvasLayer/GetReady/Button" to="CanvasLayer" method="_on_button_pressed"]
+[node name="Sliders" type="VBoxContainer" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 123.0
+offset_right = 100.0
+offset_bottom = 163.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_836fw")
+
+[node name="Music" type="HSlider" parent="UI/Sliders"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("13_27v84")
+theme_override_icons/grabber_highlight = ExtResource("14_2yn5o")
+theme_override_icons/grabber_disabled = ExtResource("15_ujq38")
+max_value = 1.0
+step = 0.05
+value = 0.8
+
+[node name="Label" type="Label" parent="UI/Sliders/Music"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -11.5
+offset_right = -4.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.505882, 0, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+text = "Music
+"
+
+[node name="SFX" type="HSlider" parent="UI/Sliders"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("14_j8io1")
+theme_override_icons/grabber_highlight = ExtResource("14_0bimn")
+theme_override_icons/grabber_disabled = ExtResource("16_wwtpy")
+max_value = 1.0
+step = 0.05
+value = 0.8
+
+[node name="Label" type="Label" parent="UI/Sliders/SFX"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -11.5
+offset_right = -10.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.505882, 0, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+text = "SFX
+"
+
+[connection signal="pressed" from="UI/GetReady/Button" to="UI" method="_on_button_pressed"]
+[connection signal="value_changed" from="UI/Sliders/Music" to="UI/Sliders" method="_on_music_value_changed"]
+[connection signal="value_changed" from="UI/Sliders/SFX" to="UI/Sliders" method="_on_sfx_value_changed"]

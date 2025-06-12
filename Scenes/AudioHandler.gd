@@ -49,13 +49,33 @@ func slowBGM():
 	%BGM.finished.connect(func() : $"%BGM".stop())
 
 func initVolume():
-	var value = SaveData.get_setting("volume")
-	if value == null:
-		value = 1
+	var value = SaveData.get_setting("volume", 1)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),linear_to_db(value))
+
+	value = getSFXVolume()
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),linear_to_db(value))
+
+	value = getMusicVolume()
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),linear_to_db(value))
+
 
 func setVolume(value:float):
 	SaveData.set_setting("volume", value)
 	SaveData.save()
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),linear_to_db(value))
-		
+
+func setSFXVolume(value:float):
+	SaveData.set_setting("sfxvolume", value)
+	SaveData.save()
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),linear_to_db(value))
+			
+func setMusicVolume(value:float):
+	SaveData.set_setting("musicvolume", value)
+	SaveData.save()
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),linear_to_db(value))
+				
+func getMusicVolume():
+	return SaveData.get_setting("musicvolume", 0.8)
+	
+func getSFXVolume():
+	return SaveData.get_setting("sfxvolume", 0.8)	
