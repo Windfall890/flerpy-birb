@@ -6,6 +6,7 @@ func _ready():
 	AudioEvents.Flap.connect(flap)
 	AudioEvents.Hit.connect(hit)
 	AudioEvents.Point.connect(point)
+	AudioEvents.Whoosh.connect(whoosh)
 	AudioEvents.MusicStart.connect(startBGM)
 	AudioEvents.MusicStop.connect(stopBGM)
 	AudioEvents.MusicSlow.connect(slowBGM)
@@ -30,10 +31,15 @@ func hit():
 	%HitSound.pitch_scale = pitch
 	%HitSound.play()
 	
-func point():
+func whoosh():
 	var pitch = randf_range(0.9,1.3)
 	%WhooshSound.pitch_scale = pitch
 	%WhooshSound.play()
+	
+func point():
+	var pitch = randf_range(1.1,1.2)
+	%PointSound.pitch_scale = pitch
+	%PointSound.play()
 
 func startBGM():
 	%BGM.pitch_scale = 1

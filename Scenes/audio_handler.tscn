@@ -30,6 +30,7 @@ bus = &"SFX"
 [node name="PointSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("5_tm3m7")
+volume_db = -1.0
 bus = &"SFX"
 
 [node name="WhooshSound" type="AudioStreamPlayer2D" parent="."]

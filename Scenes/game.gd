@@ -25,8 +25,10 @@ func clockTick():
 	
 func countScore():
 	score += 1
+	await get_tree().create_timer(0.25).timeout
 	Events.ScoreChanged.emit(score)
-
+	AudioEvents.Point.emit()
+	
 func gameOver():
 	var highscore= SaveData.get_setting("highScore")
 	if highscore == null:
@@ -37,6 +39,7 @@ func gameOver():
 	
 	SaveData.set_setting("last_score", score)
 	%GameTime.stop()
+	%DifficultyTime.stop()
 
 func reset()-> void:
 	get_tree().reload_current_scene()
